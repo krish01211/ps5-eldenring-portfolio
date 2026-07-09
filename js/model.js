@@ -141,53 +141,58 @@ const Model = {
     }
   ],
 
-  // ---- Creative mode video embeds (Google Drive) ----
+  // ---- Creative mode video embeds (YouTube) ----
   videos: [
     {
       title: "King Chris Edit",
       desc: "A stylized dynamic visual edit focusing on pacing, kinetic match cuts, and color matching.",
-      driveId: "1ytr2iIeww-BSkP3kcJRE9Nei28oXcA_x"
+      youtubeId: "FBQtTewW8Nw", isShort: false
     },
     {
-      title: "Infinitus Edit 1",
-      desc: "A rhythmic splice combining heavy sound design, visual effects, and speed ramping.",
-      driveId: "13aDlVlHp1Fmyyn6jZ_XprYJnBIB--2Et"
+      title: "Gaming Style Edit",
+      desc: "High-energy gaming-style edit with fast cuts, motion blur, and dynamic frame transitions.",
+      youtubeId: "iAvagDTxUxc", isShort: false
     },
     {
-      title: "Loop Style Edit",
-      desc: "An experimental visual loop with seamless transitions and creative match cuts.",
-      driveId: "1THl2aLg0utPQz0S5yXRbIorZvOefILOF"
+      title: "Infinitus Tech Event Edit",
+      desc: "Event coverage edit combining sound design, visual effects, and speed ramping for Infinitus.",
+      youtubeId: "HK8StQxc7QU", isShort: false
+    },
+    {
+      title: "AMV Style Edit",
+      desc: "Anime Music Video style editing with visual flow, motion interpolation, and action sync.",
+      youtubeId: "5hNUB9iRHC0", isShort: false
     },
     {
       title: "Judge Announcement Video",
       desc: "The critical visual highlight video that directly initiated contacts from film directors.",
-      driveId: "1341BMko02fFncaHH58JODyl8N6wlQf_A"
+      youtubeId: "S0hWfloYny4", isShort: false
     },
     {
-      title: "Solo Leveling AMV Edit",
-      desc: "Anime Music Video style editing focusing on visual flow, motion interpolation, and action sync.",
-      driveId: "1TGnmDmHnIpnsTFtfZbzlTR0-zLHGG_hm"
+      title: "Infinitus Edit 1",
+      desc: "A rhythmic splice combining heavy sound design, visual effects, and speed ramping.",
+      youtubeId: "jJ0yIHtrQgs", isShort: false
     },
     {
-      title: "Spider-Man Edit",
-      desc: "Cinematic montage splicing scenes with custom color grading and atmospheric sound layering.",
-      driveId: "1ZrE4UJ0YRyQ93fXSDlE8C2W9dJJAdlzW"
-    },
-    {
-      title: "Another Infinitus Edit",
-      desc: "Ramping, camera shake effects, and fast-paced visual pacing designed for social engagement.",
-      driveId: "1lyetzqpHw82Su-PoXOAfnps49pNDMjha"
+      title: "Announcement Motion Graphics",
+      desc: "Motion graphics announcement combining typography, tracking, and After Effects keyframes.",
+      youtubeId: "_lCk90wiGUw", isShort: true
     },
     {
       title: "Fast Pace Movie BTS Edit",
       desc: "Behind-the-scenes promotional format utilizing speed cuts, sound effects, and interviews.",
-      driveId: "1TN-EO0NqdfjZuqQ-tXwP2Qe1gsMnlJ-B"
+      youtubeId: "szOk__v-f7c", isShort: true
     },
     {
-      title: "Edit with Motion Graphics",
-      desc: "Post-production integration combining typography, tracking elements, and After Effects keyframes.",
-      driveId: "1_i-woL8PaQ-U7KMlwBJ2FQwJXdelGpcs"
-    }
+      title: "Spider-Man AE Edit",
+      desc: "Cinematic montage with custom color grading, atmospheric sound, and After Effects compositing.",
+      youtubeId: "7lsviKWYkak", isShort: true
+    },
+    {
+      title: "Pepsi AE Loop Edit",
+      desc: "An experimental seamless loop crafted with After Effects compositing and brand motion design.",
+      youtubeId: "zQSONfpMtyA", isShort: true
+    },
   ],
 
   // ---- Fetch Repos from GitHub ----

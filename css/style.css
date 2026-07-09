@@ -100,17 +100,6 @@ body[data-mode="creative"] .tech-hud-element {
   display: none !important;
 }
 
-/* ============================ CREATIVE MODE CURSOR ============================ */
-/* Hide the JS sprite cursor (tech mode only) in creative mode */
-body[data-mode="creative"] #cursor {
-  display: none !important;
-}
-/* Apply Elden Ring PNG cursor for creative mode */
-body[data-mode="creative"],
-body[data-mode="creative"] * {
-  cursor: url('../public/images/wind-rose-cursor.png') 24 24, auto !important;
-}
-
 
 /* ============================ BACKGROUND EFFECTS ============================ */
 #bg {
@@ -1213,11 +1202,24 @@ body[data-mode="creative"] #wipe .flash {
 }
 
 body[data-mode="creative"] #cursor {
-  display: none !important; /* Creative mode uses normal cursor */
+  display: none !important; /* Creative mode uses wind-rose cursor div instead */
 }
+/* Wind-rose cursor for creative mode — overrides the cursor:none from cursor-on */
 body[data-mode="creative"].cursor-on, body[data-mode="creative"].cursor-on * {
-  cursor: auto !important;
+  cursor: url('../public/images/wind-rose-cursor.png') 24 24, auto !important;
 }
+/* Elden Ring cursor on hover for clickable elements in creative mode */
+body[data-mode="creative"].cursor-on a:hover,
+body[data-mode="creative"].cursor-on button:hover,
+body[data-mode="creative"].cursor-on .card:hover,
+body[data-mode="creative"].cursor-on .creative-menu-item:hover,
+body[data-mode="creative"].cursor-on .creative-back-hint:hover,
+body[data-mode="creative"].cursor-on .creative-chip:hover,
+body[data-mode="creative"].cursor-on .carousel-btn:hover,
+body[data-mode="creative"].cursor-on #mode-toggle-btn:hover {
+  cursor: url('../public/images/elden-ring-cursor.png') 16 16, pointer !important;
+}
+
 
 /* ============================ CONTACT FORM ============================ */
 #contact-form {
@@ -1591,20 +1593,87 @@ body[data-mode="creative"] .mode-label-creative {
 
 .video-wrapper {
   position: relative;
-  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  padding-bottom: 56.25%; /* 16:9 */
   height: 0;
   border: 1px solid rgba(200, 169, 110, 0.2);
   background: #000;
+  overflow: hidden;
+}
+
+/* Portrait wrapper for YouTube Shorts */
+.video-wrapper.short-wrapper {
+  padding-bottom: 0 !important;
+  height: 480px;
+  max-width: 270px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .video-wrapper iframe {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   border: 0;
 }
+
+/* YouTube Facade (thumbnail + play button) */
+.yt-facade {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.yt-facade.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.yt-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.yt-play-btn {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+  filter: drop-shadow(0 2px 12px rgba(0,0,0,0.7));
+}
+
+.yt-facade:hover .yt-play-btn {
+  transform: translate(-50%, -50%) scale(1.12);
+  filter: drop-shadow(0 4px 20px rgba(255,0,0,0.6));
+}
+
+/* "Watch on YouTube" link */
+.yt-watch-btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 7px 18px;
+  border: 1px solid rgba(200, 169, 110, 0.4);
+  color: var(--gold);
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.yt-watch-btn:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #000;
+}
+
 
 .video-info {
   margin-top: 15px;

@@ -263,15 +263,45 @@ const View = {
     if (this.els.videoTrack.childElementCount) return;
     videos.forEach(v => {
       const slide = document.createElement("div");
-      slide.className = "carousel-slide";
+      slide.className = "carousel-slide" + (v.isShort ? " is-short" : "");
+
+      const thumb    = `https://img.youtube.com/vi/${v.youtubeId}/maxresdefault.jpg`;
+      const thumbHq  = `https://img.youtube.com/vi/${v.youtubeId}/hqdefault.jpg`;
+      const embedUrl = `https://www.youtube.com/embed/${v.youtubeId}?autoplay=1&rel=0`;
+      const watchUrl = `https://www.youtube.com/watch?v=${v.youtubeId}`;
+
       slide.innerHTML = `
-        <div class="video-wrapper">
-          <iframe src="https://drive.google.com/file/d/${v.driveId}/preview" allow="autoplay" allowfullscreen></iframe>
+        <div class="video-wrapper${v.isShort ? " short-wrapper" : ""}">
+          <div class="yt-facade">
+            <img class="yt-thumb" src="${thumb}" alt="${v.title}" loading="lazy"
+                 onerror="this.src='${thumbHq}'">
+            <button class="yt-play-btn" aria-label="Play ${v.title}">
+              <svg viewBox="0 0 68 48" xmlns="http://www.w3.org/2000/svg" width="64" height="45">
+                <path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79 0 34 0 34 0S12.21 0 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C0 13.05 0 24 0 24s0 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 48 34 48 34 48s21.79 0 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C68 34.95 68 24 68 24s0-10.95-1.48-16.26z" fill="#ff0000"/>
+                <path d="M45 24 27 14v20" fill="#fff"/>
+              </svg>
+            </button>
+          </div>
+          <iframe src="" data-src="${embedUrl}"
+            allow="autoplay; encrypted-media; picture-in-picture"
+            allowfullscreen loading="lazy"></iframe>
         </div>
         <div class="video-info">
           <h3>${v.title}</h3>
           <p>${v.desc}</p>
+          <a class="yt-watch-btn" href="${watchUrl}" target="_blank" rel="noopener">
+            Watch on YouTube ↗
+          </a>
         </div>`;
+
+      // Click facade → load iframe with autoplay
+      const facade = slide.querySelector(".yt-facade");
+      const iframe = slide.querySelector("iframe");
+      facade.addEventListener("click", () => {
+        iframe.src = iframe.dataset.src;
+        facade.classList.add("hidden");
+      });
+
       this.els.videoTrack.appendChild(slide);
     });
   },
