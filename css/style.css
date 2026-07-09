@@ -108,7 +108,7 @@ body[data-mode="creative"] #cursor {
 /* Apply Elden Ring PNG cursor for creative mode */
 body[data-mode="creative"],
 body[data-mode="creative"] * {
-  cursor: url('../public/images/elden-ring-cursor.png') 0 0, auto !important;
+  cursor: url('../public/images/wind-rose-cursor.png') 24 24, auto !important;
 }
 
 
