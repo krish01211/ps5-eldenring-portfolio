@@ -181,14 +181,13 @@ const Controller = {
         btn.disabled = true;
         status.textContent = "Sending…";
         try {
-          const res = await fetch(`https://formsubmit.co/ajax/${Model.contactEmail}`, {
+          const res = await fetch("https://formspree.io/f/xojooypa", {
             method: "POST",
             headers: { "Content-Type": "application/json", "Accept": "application/json" },
             body: JSON.stringify({
               name: data.name,
               email: data.email,
               message: data.message,
-              _subject: `Portfolio message from ${data.name}`,
             }),
           });
           if (!res.ok) throw new Error(res.status);
